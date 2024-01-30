@@ -1,6 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import NavBar from "../components/navbar";
-
+import { AuthContext } from "../authContext/authContext";
+import { useContext } from "react";
+const axios = require('axios')
 const HomePage = () => {
+  const navigate = useNavigate();
+  const isLogin = useContext(AuthContext)
+
   return (
     <>
       <NavBar></NavBar>
@@ -42,13 +48,17 @@ const HomePage = () => {
               href="/signup"
               class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
             >
-              Signup
+            <button onClick={()=>{
+              navigate("/signup")
+            }}>Signup</button>
             </a>
             <a
               href="/login"
               class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
             >
-              Login
+            <button onClick={()=>{
+              navigate("/login")
+            }}>Login</button>
             </a>
           </div>
           <div class="px-4 mx-auto text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36">
