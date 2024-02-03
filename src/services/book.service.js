@@ -1,9 +1,15 @@
-const API_BASE_URL = "http://localhost:3001/api/v1"; // Adjust the base URL as necessary
+const API_BASE_URL = "http://localhost:5000/api/v1"; // Adjust the base URL as necessary
 
 // Fetch all books
 export const getAllBooks = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/books`);
+    const response = await fetch(`${API_BASE_URL}/books`,{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -34,6 +40,7 @@ export const addBook = async (bookData) => {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(bookData),
     });
     if (!response.ok) {
@@ -53,6 +60,7 @@ export const updateBook = async (id, bookData) => {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(bookData),
     });
     if (!response.ok) {
@@ -69,6 +77,7 @@ export const deleteBook = async (id) => {
   try {
     const response = await fetch(`${API_BASE_URL}/books/${id}`, {
       method: "DELETE",
+      credentials: "include",
     });
     if (!response.ok) {
       throw new Error("Network response was not ok");
